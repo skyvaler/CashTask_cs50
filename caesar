@@ -1,0 +1,60 @@
+#include <cs50.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+#include <string.h>
+
+int main(int argc, string argv[])
+{
+    string plntxt = "";
+	string key = argv[1];
+	//Check condition how many elements of command-line has entered the user
+	if (argc != 2)
+	{
+		printf("Usage: ./caesar key\n");
+		return 1;
+	}
+	else
+    {
+	    int k = atoi(key);
+	    if (k == 0)
+	        {
+	            printf("Enter valid key, please!\n");
+	            return 1;
+	        }
+	    //User input the first string, which would be encrypt in the number of key
+        printf("plaintext:  %s", plntxt);
+        plntxt = get_string();
+	    if (plntxt != NULL)
+	        {
+	        	printf("ciphertext: ");
+	        	//Initialize array of plaintext to array
+	        	for (int i = 0; i < strlen(plntxt); i++)
+	                {
+						if (isupper(plntxt[i]))
+							{
+								while ((int)plntxt[i] >= 65 || (int)plntxt[i] <= 90)
+								{
+									//Formula for transform in uppercase the i-th elements for ciphertext
+									plntxt[i] = (((int)plntxt[i] + k - 65 ) % 26) + 65;
+									printf("%c", (char)plntxt[i]);
+									break;
+								}
+							}
+						else if (islower(plntxt[i]))
+	                        {
+	                        	while ((int)plntxt[i] >= 97 || (int)plntxt[i] <= 122)
+								{
+									//Formula for transform in lowercase the i-th elements for ciphertext
+	                            	plntxt[i] = (((int)plntxt[i] + k- 97) % 26) + 97;
+									printf("%c", (char)plntxt[i]);
+									break;
+								}
+	                        }
+	                    else printf("%c", plntxt[i]);
+			        }
+			  printf("\n");
+	          return 0;
+           }
+    }
+}
