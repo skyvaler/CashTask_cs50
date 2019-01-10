@@ -28,7 +28,6 @@ int main(void)
         sum++;
         n -= 10;
     }
-
     while (n >= 5 && n < 10)        //minuses cash by 5
     {
         sum++;
@@ -40,5 +39,5 @@ int main(void)
         n -= 1;
     }
     printf("%i\n", sum);            //get the summary of cash
-    return 0;                       // program execute successfully
+    return 0;                       // program executes successfully
 }
